@@ -1,0 +1,22 @@
+import {
+    HDKComponent,
+    HNode,
+    Prefab,
+    render,
+    Animation,
+    InfoPanel,
+  } from '@hiber3d/hdk-react';
+  const JTVS = () => (
+    <HNode>
+      <Prefab id="flat_cube_01" />
+    </HNode>
+  );
+  const An = () => (
+    <HNode>
+
+    </HNode>
+  );
+  const World = () => <JTVS /> <An />;
+  
+  render(<World />, { environment: 'sunrise_01' });
+  
