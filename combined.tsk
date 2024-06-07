@@ -6,21 +6,61 @@ import {
   Animation,
   InfoPanel,
 } from '@hiber3d/hdk-react';
+import { InCircle } from '@hiber3d/hdk-react-components';
+const Icecreamcone = () => (
+  <HNode scaleX={0.2} scaleY={0.2} scaleZ={0.2}>
+    <Prefab id="ice_cream_01" />
+    <Prefab id="cone" rotZ={180} scaleY={1.5} material="t_cubes_01" />
+  </HNode>
+);
+const Iecreambush = () => (
+  <HNode>
+    <Prefab id="ice_cream_01" scaleX={1.5} scaleZ={1.5} />
+    <InCircle
+      y={1.2}
+      rotY={0}
+      radius={1.2}
+      items={15}
+      renderItem={() => <Icecreamcone />}
+    />
+  </HNode>
+);
 const JTVS = () => (
   <HNode>
-    <Prefab id="flat_cube_01" />
+    <Prefab id="flat_cube_01" scaleX={50} scaleZ={50} />
+    <Prefab id="ice_cream_01" y={2} scaleX={60} scaleZ={60} />
+    <Prefab id="gpl_spawn_point_02" y={10} />
+    <InCircle
+      y={2}
+      rotY={0}
+      radius={60}
+      items={20}
+      renderItem={() => (
+        <Prefab id="ice_cream_01" scaleX={10} scaleY={10} scaleZ={10} />
+      )}
+    />
+    <InCircle
+      y={3}
+      rotY={0}
+      radius={40}
+      items={20}
+      renderItem={() => <Iecreambush />}
+    />
+    <InCircle
+      y={3}
+      rotY={45}
+      radius={40}
+      items={20}
+      renderItem={() => <Prefab id="chocolatechip_cookie_01" />}
+    />
   </HNode>
 );
-const An = () => (
-  <HNode>
-
-  </HNode>
-);
+const An = () => <HNode></HNode>;
 const World = () => (
   <HNode>
-      <JTVS/>
-      <An/>
+    <JTVS />
+    <An />
   </HNode>
 );
 
-render(<World />, { environment: 'sunrise_01' });
+render(<World />, { environment: 'cloud_mountains_01' });
